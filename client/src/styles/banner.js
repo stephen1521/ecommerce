@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import {styled} from '@mui/material/styles';
 import {Box} from '@mui/system'
 import { Colors } from './theme';
@@ -53,5 +53,24 @@ export const BannerDescription = styled(Typography)(({theme}) => ({
         lineHeight: 1.15,
         letterSpacing: 1.15,
         marginBottom: '1.5em',
+    }
+}))
+
+export const BannerShopButton = styled(Button, {
+    shouldForwardProp: (prop) => prop !== 'color',
+    name: 'MyShopButton',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [
+        styles.root,
+        props.color === 'primary' && styles.primary,
+        props.color === 'secondary' && styles.secondary
+    ]
+})(({theme}) => ({
+    padding: '20px 0px',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    [theme.breakpoints.down('sm')]: {
+        padding: '10px 0px',
+        fontSize: '14px'
     }
 }))

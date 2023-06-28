@@ -1,6 +1,6 @@
 import { Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { Bannercontainer, BannerContent, BannerDescription, BannerImage, BannerTitle } from "../../styles/banner";
+import { Bannercontainer, BannerContent, BannerDescription, BannerImage, BannerShopButton, BannerTitle } from "../../styles/banner";
 
 export default function Banner(){
     const theme = useTheme();
@@ -19,6 +19,7 @@ export default function Banner(){
                 <BannerDescription variant="subtitle">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 </BannerDescription>
+                <BannerShopButton color='primary'>Shop Now</BannerShopButton>
             </BannerContent>
         </Bannercontainer>
     )
