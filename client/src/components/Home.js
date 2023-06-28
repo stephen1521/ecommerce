@@ -15,18 +15,18 @@ const Home = () => {
     <Container maxWidth='lg'>
         <Box>
           
-            <Typography variant='h1'>
+            {/* <Typography variant='h1'>
                 {auth ? <>Welcome: {users.firstname}</> : <>Please Login</> }
-            </Typography>
+            </Typography> */}
         </Box>
         {auth ? 
           <>
-          <Button variant="contained" onClick={() => dispatch(logout())}>Logout</Button>
+          {/* <Button variant="contained" onClick={() => dispatch(logout())}>Logout</Button> */}
           </>
           : 
           <>
-          <Button variant="contained" href="/login">Login</Button>
-          <Button variant="contained" href="/register">Register</Button>
+          {/* <Button variant="contained" href="/login">Login</Button>
+          <Button variant="contained" href="/register">Register</Button> */}
           </>
         }
         

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from '@emotion/react';
-import theme from './theme'
+import { ThemeProvider } from '@mui/system';
+import theme from './styles/theme'
 import { CssBaseline } from '@mui/material';
 import store from './redux/store'
 import {Provider} from 'react-redux'
@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}> 
     {/* CSSBaseline for browsder compatibility */}
-      <CssBaseline /> 
+      {/* <CssBaseline />  */}
         <Provider store={store}>
           <App />
         </Provider>

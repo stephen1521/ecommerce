@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './components/Layout';
 import Login from './components/Login';
