@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import Actions from "./actions";
 
-export default function AppBarMobile({ matches, setOpenDrawer, setShowSearchBox }){
+export default function AppBarMobile({ matches, setOpenDrawer, setShowSearchBox, setShowProfile, setShowWishList }){
 
     return (
         <AppBarContainer>
@@ -17,7 +17,7 @@ export default function AppBarMobile({ matches, setOpenDrawer, setShowSearchBox 
             <IconButton onClick={() => setShowSearchBox(true)}>
                 <SearchIcon />
             </IconButton>
-            <Actions matches={matches} />
+            <Actions matches={matches} setShowProfile={setShowProfile} setShowWishList={setShowWishList}/>
         </AppBarContainer>
     )
 }

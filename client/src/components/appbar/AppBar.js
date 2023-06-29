@@ -237,12 +237,12 @@ import AppBarMobile from "./appbarMobile";
 // }
 // export default ResponsiveAppBar;
 
-export default function Appbar({setOpenDrawer, setShowSearchBox}) {
+export default function Appbar({setOpenDrawer, setShowSearchBox, setShowLogin, setShowRegister, setShowProfile, setShowWishList}) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('md'))
   return (
     <>
-      {matches ? <AppBarMobile matches={matches} setOpenDrawer={setOpenDrawer} setShowSearchBox={setShowSearchBox} /> : <AppBarDesktop matches={matches} setShowSearchBox={setShowSearchBox}/>}
+      {matches ? <AppBarMobile matches={matches} setOpenDrawer={setOpenDrawer} setShowSearchBox={setShowSearchBox} setShowProfile={setShowProfile} setShowWishList={setShowWishList} /> : <AppBarDesktop matches={matches} setShowSearchBox={setShowSearchBox} setShowLogin={setShowLogin} setShowRegister={setShowRegister} setShowProfile={setShowProfile} setShowWishList={setShowWishList}/>}
     </>
   )
 }

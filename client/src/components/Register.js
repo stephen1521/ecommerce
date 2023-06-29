@@ -14,11 +14,13 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useSelector, useDispatch } from 'react-redux'
 import { registerUser, resetStatus } from '../redux/usersSlice'
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Slide, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import { registrationValidator } from '../lib/validator';
+import { LoginBoxContainer } from '../styles/login';
+import CloseIcon from '@mui/icons-material/Close'
 
-export default function Register() {
+export default function Register({showRegister, setShowRegister, setShowLogin}) {
 
   const users = useSelector( state => state.users)
   const status = useSelector( state => state.users.status)
@@ -93,7 +95,8 @@ export default function Register() {
   };
 
   return (
-
+      <Slide direction='down' in={showRegister} timeout={500}>
+      <LoginBoxContainer>
       <Container component="main" maxWidth="xs">
         <Box
           sx={{
@@ -188,15 +191,20 @@ export default function Register() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link onClick={() => {
+                  setShowRegister(false) 
+                  setShowLogin(true)}} variant="body2">
                   Already have an account? Login here!
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-
+        <IconButton onClick={() => setShowRegister(false)} sx={{position: 'absolute', top: 10, right: 10}}>
+                    <CloseIcon sx={{fontSize: '4rem'}} color='secondary'/>
+        </IconButton>
       </Container>
-
+      </LoginBoxContainer>
+      </Slide>
   );
 }

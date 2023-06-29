@@ -14,11 +14,13 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useDispatch, useSelector} from 'react-redux'
 import { login, resetStatus } from '../redux/usersSlice'
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Slide, IconButton } from '@mui/material';
 import {redirect, useNavigate} from 'react-router-dom'
+import { LoginBoxContainer } from '../styles/login';
+import CloseIcon from '@mui/icons-material/Close'
 
 
-export default function Login() {
+export default function Login({showLogin, setShowLogin, setShowRegister}) {
   const users = useSelector(state => state.users)
   const status = useSelector(state => state.users.status)
   const dispatch = useDispatch()
@@ -65,9 +67,9 @@ export default function Login() {
   };
 
   return (
-
+      <Slide direction='down' in={showLogin} timeout={500}>
+      <LoginBoxContainer>
       <Container component="main" maxWidth="xs">
-
         <Box
           sx={{
             marginTop: 8,
@@ -118,7 +120,8 @@ export default function Login() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-            > { (status === 'pending') ? <CircularProgress /> : 'Sign In' }
+              onClick={() => setShowLogin(false)}
+            > {(status === 'pending') ? <CircularProgress /> : 'Sign In' }
              
               
             </Button>
@@ -129,15 +132,20 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/register" variant="body2">
+                <Link onClick={() => {
+                  setShowLogin(false) 
+                  setShowRegister(true)}} variant="body2">
                  Don't have an account? Register Here!
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-
+        <IconButton onClick={() => setShowLogin(false)} sx={{position: 'absolute', top: 10, right: 10}}>
+                    <CloseIcon sx={{fontSize: '4rem'}} color='secondary'/>
+        </IconButton>
       </Container>
-
+      </LoginBoxContainer>
+      </Slide>
   );
 }

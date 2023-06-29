@@ -6,9 +6,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import { Colors } from "../../styles/theme";
 import { useUIContext } from "../../context";
 
-export default function Actions( matches ) {
+export default function Actions({matches, setShowProfile, setShowWishList}) {
     const { cart, setShowCart} = useUIContext();
-    let Breaking = matches.matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop
+    let Breaking = matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop
     return (
         <Breaking>
             <MyList type='row'>
@@ -35,7 +35,7 @@ export default function Actions( matches ) {
                         justifyContent:'center'
                     }}
                 >
-                    <ListItemIcon
+                    <ListItemIcon onClick={() => setShowWishList(true)}
                         sx={{
                             display: 'flex',
                             justifyContent: 'center',
@@ -51,7 +51,7 @@ export default function Actions( matches ) {
                         justifyContent:'center'
                     }}
                 >
-                    <ListItemIcon
+                    <ListItemIcon onClick={() => setShowProfile(true)}
                         sx={{
                             display: 'flex',
                             justifyContent: 'center',
