@@ -9,6 +9,8 @@ import { Box, Typography } from '@mui/material'
 import Footer from './Footer/footer'
 import AppDrawer from './drawer/drawer'
 import SearchBox from './search/search'
+import Cart from './cart/cart'
+import { UIProvider } from '../context'
 
 const Layout = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -21,19 +23,22 @@ const Layout = () => {
             background: '#fff'
           }}
         >
-            <AppBar setOpenDrawer={setOpenDrawer} setShowSearchBox={setShowSearchBox}/>
-            <Banner />
-            <Promotions />
-            <Box display={'flex'} justifyContent='center' sx={{ p:4 }}>
-              <Typography variant='h4'>
-                Our Products
-              </Typography>
-            </Box>
-            <Products />
-            <Footer />
-            <AppDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
-            <SearchBox showSearchBox={showSearchBox} setShowSearchBox={setShowSearchBox}/>
-            <Outlet />
+            <UIProvider>
+              <AppBar setOpenDrawer={setOpenDrawer} setShowSearchBox={setShowSearchBox}/>
+              <Banner />
+              <Promotions />
+              <Box display={'flex'} justifyContent='center' sx={{ p:4 }}>
+                <Typography variant='h4'>
+                  Our Products
+                </Typography>
+              </Box>
+              <Products />
+              <Footer />
+              <AppDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
+              <Cart />
+              <SearchBox showSearchBox={showSearchBox} setShowSearchBox={setShowSearchBox}/>
+              <Outlet />
+            </UIProvider>
         </Container>    
   )
 }

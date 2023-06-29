@@ -4,11 +4,12 @@ import CloseIcon from '@mui/icons-material/Close'
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from '../../styles/productDetail'
 import { useTheme } from '@emotion/react'
 import { Product, ProductImage } from '../../styles/products'
-import IncDec from '../ui'
+import IncDec from '../ui/index'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import InstagramIcon from '@mui/icons-material/Instagram' 
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import useCart from '../../hooks/useCart'
 
 
 function slideTransition(props) {
@@ -18,7 +19,7 @@ function slideTransition(props) {
 export default function ProductDetail({open, onClose, product}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('md'));
-
+    const {addToCart, addToCartText} = useCart(product);
 
     return (
         <Dialog TransitionComponent={slideTransition} variant='permanat' open={open} fullScreen>
@@ -48,7 +49,7 @@ export default function ProductDetail({open, onClose, product}) {
                         </Typography>
                         <Box sx={{ marginTop: 4, display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                             <IncDec />
-                            <Button variant='contained'>Add to Cart</Button>
+                            <Button onClick={addToCart} variant='contained'>{addToCartText}</Button>
                         </Box>
                         <Box display= 'flex' alignItems= 'center' sx={{ marginTop: 4, color: Colors.light}}>
                             <FavoriteIcon sx={{ marginRight: 2}}/>
