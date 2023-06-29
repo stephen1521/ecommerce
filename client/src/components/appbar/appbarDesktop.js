@@ -3,7 +3,7 @@ import { AppBarContainer, AppBarHeader, MyList } from "../../styles/appbar";
 import  SearchIcon from '@mui/icons-material/Search'
 import Actions from "./actions";
 
-export default function AppBarDesktop({ matches }){
+export default function AppBarDesktop({ matches, setShowSearchBox }){
 
     return (
         <AppBarContainer>
@@ -13,13 +13,13 @@ export default function AppBarDesktop({ matches }){
                 <ListItemText primary= 'Categories'/>
                 <ListItemText primary= 'Products'/>
                 <ListItemText primary= 'Contact Us'/>
-                <ListItemButton>
+                <ListItemButton onClick={() => setShowSearchBox(true)}>
                     <ListItemIcon>
                         <SearchIcon />
                     </ListItemIcon>
                 </ListItemButton>
             </MyList>
-            <Actions matches={ matches }/>
+            <Actions matches={matches} />
         </AppBarContainer>
     )
 }
