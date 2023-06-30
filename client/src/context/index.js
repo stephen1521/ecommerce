@@ -6,13 +6,16 @@ export const useUIContext = () => useContext(UIContext);
 
 export const UIProvider = ({children}) => {
     const [cart, setCart] = useState([])
-    const [showCart, setShowCart] =useState(false);
+    const [showCart, setShowCart] = useState(false);
+    const [wishList, setWishList] = useState([]);
 
     const value = {
         cart,
         setCart,
         showCart,
-        setShowCart
+        setShowCart,
+        wishList,
+        setWishList
     }
 
     return <UIContext.Provider value={value}>{children}</UIContext.Provider>

@@ -8,24 +8,35 @@ import { useState } from "react";
 import useDialogModel from '../../hooks/useDialogModel'
 import ProductDetail from '../productdetail/productDetail'
 import useCart from '../../hooks/useCart'
+import useWishList from '../../hooks/useWishList'
+import { useUIContext } from '../../context/index'
 
 export default function SingleProductDesktop({ product, matches }) {
+    const {wishList} = useUIContext()
     const [showOptions, setShowOptions] = useState(false);
     const [ProductDetailDialog, showProductDetailDialog, closeProductDetailDialog] = useDialogModel(ProductDetail);
   
     const {addToCart, addToCartText} = useCart(product);
-   
+    const {addToWishList} = useWishList(product);
+    const [favIsClicked, setFavIsClicked] = useState(0);
+  
     const handleMouseEnter = () => {
       setShowOptions(true);
-    };
+    }
     const handleMouseLeave = () => {
       setShowOptions(false);
-    };
+    }
+
+    const handleClick = () => {
+      addToWishList();
+      wishList.some(item => item.id === product.id) ? setFavIsClicked(0) : setFavIsClicked(1);
+    } 
+
     return (
       <>
         <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <ProductImage src={product.image} />
-          <ProductFavButton isfav={0}>
+          <ProductFavButton isFav={favIsClicked} onClick={handleClick}>
             <FavoriteIcon />
           </ProductFavButton>
           {showOptions && (
