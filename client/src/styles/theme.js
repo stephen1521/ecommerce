@@ -2,8 +2,8 @@ import { createTheme } from "@mui/material/styles";
 import {lighten} from 'polished'
 
 export const Colors = {
-    primary: '#5f2c3e',
-    secondary: '#d1adcc',
+    primary: '#2091d8',
+    secondary: '#20b5d8',
     success: '#4CAF50',
     info: '#00a2ff',
     danger: '#FF5722',

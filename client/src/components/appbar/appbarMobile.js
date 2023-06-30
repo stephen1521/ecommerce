@@ -12,7 +12,7 @@ export default function AppBarMobile({ matches, setOpenDrawer, setShowSearchBox,
                 <MenuIcon />
             </IconButton>
             <AppBarHeader textAlign={'center'} variant='h4'>
-                My Stuff
+                Lorum Ipsum
             </AppBarHeader>
             <IconButton onClick={() => setShowSearchBox(true)}>
                 <SearchIcon />

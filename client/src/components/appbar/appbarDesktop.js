@@ -13,17 +13,23 @@ export default function AppBarDesktop({ matches, setShowSearchBox, setShowLogin,
         dispatch(authCheck())
       }, [auth])
 
+    const hover = {
+        "&:hover": {
+            cursor: 'pointer'
+        }
+    }
+
     return (
         <AppBarContainer>
-            <AppBarHeader>My Stuff</AppBarHeader>
+            <AppBarHeader>Lorum Ipsoum</AppBarHeader>
             <MyList type='row'>
                 <ListItemText primary= 'Home'/>
                 <ListItemText primary= 'Products'/>
                 <ListItemText primary= 'Contact Us'/>
-                { auth ? <ListItemText primary= 'Logout' onClick={() => dispatch(logout())}/>
+                { auth ? <ListItemText primary= 'Logout' sx={hover} onClick={() => dispatch(logout())}/>
                 : <>
-                <ListItemText primary= 'Login' onClick={() => setShowLogin(true)}/>
-                <ListItemText primary= 'Register' onClick={() => setShowRegister(true)}/>
+                <ListItemText primary= 'Login' sx={hover} onClick={() => setShowLogin(true)}/>
+                <ListItemText primary= 'Register' sx={hover} onClick={() => setShowRegister(true)}/>
                 </>}
                 <ListItemButton onClick={() => setShowSearchBox(true)}>
                     <ListItemIcon>

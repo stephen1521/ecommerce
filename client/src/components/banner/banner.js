@@ -11,10 +11,10 @@ export default function Banner(){
             <BannerImage src="/images/banner/banner.jpg"/>
             <BannerContent>
                 <Typography variant="h6">
-                    Huge Collection
+                    Dolor sit
                 </Typography>
                 <BannerTitle>
-                    New Stuff
+                    Sit Amet
                 </BannerTitle>
                 <BannerDescription variant="subtitle">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 

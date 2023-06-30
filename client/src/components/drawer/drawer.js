@@ -23,42 +23,42 @@ export default function AppDrawer({openDrawer, setOpenDrawer, setShowLogin, setS
             <Drawer open={openDrawer}>
                 <List>
                     <ListItemButton>
-                        <ListItemText>Home</ListItemText>
+                        <ListItemText primaryTypographyProps={{ color: Colors.white}} >Home</ListItemText>
                     </ListItemButton>
                     <Divider variant='middle'/>
                     <ListItemButton>
-                        <ListItemText>Products</ListItemText>
+                        <ListItemText primaryTypographyProps={{ color: Colors.white}}>Products</ListItemText>
                     </ListItemButton>
                     <Divider variant='middle'/>
                     <ListItemButton>
-                        <ListItemText>About Us</ListItemText>
+                        <ListItemText primaryTypographyProps={{ color: Colors.white}}>About Us</ListItemText>
                     </ListItemButton>
                     <Divider variant='middle'/>
                     <ListItemButton>
-                        <ListItemText>Contact Us</ListItemText>
+                        <ListItemText primaryTypographyProps={{ color: Colors.white}}>Contact Us</ListItemText>
                     </ListItemButton>
                     <Divider variant='middle'/>
                     { auth ? <> 
-                    <ListItemButton onClick={() => dispatch(logout())}>
-                        <ListItemText>Logout</ListItemText>
+                    <ListItemButton onClick={() => dispatch(logout())} >
+                        <ListItemText primaryTypographyProps={{ color: Colors.white}}>Logout</ListItemText>
                     </ListItemButton>
                     <Divider variant='middle'/>
                     </> 
                     : <> <ListItemButton>
                         <ListItemText onClick={() => {
                             setShowLogin(true) 
-                            setOpenDrawer(false)}}>Login</ListItemText>
+                            setOpenDrawer(false)}} primaryTypographyProps={{ color: Colors.white}}>Login</ListItemText >
                     </ListItemButton>
                     <Divider variant='middle'/>
                     <ListItemButton>
                         <ListItemText onClick={() => {
                             setShowRegister(true) 
-                            setOpenDrawer(false)}}>Register</ListItemText>
+                            setOpenDrawer(false)}} primaryTypographyProps={{ color: Colors.white}}>Register</ListItemText>
                     </ListItemButton>
                     <Divider variant='middle'/>
                     </>}
                     <ListItemButton>
-                        <ListItemText onClick={() => setOpenDrawer(false)}>Close</ListItemText>
+                        <ListItemText onClick={() => setOpenDrawer(false)} primaryTypographyProps={{ color: Colors.white}}>Close</ListItemText>
                     </ListItemButton>
                     <Divider variant='middle'/>
                 </List>

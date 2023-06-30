@@ -25,7 +25,7 @@ export default function ProductDetail({open, onClose, product}) {
         <Dialog TransitionComponent={slideTransition} variant='permanat' open={open} fullScreen>
             <DialogTitle sx={{background: Colors.secondary}}>
                 <Box display={'flex'} alignItems='center' justifyContent={'space-between'}>
-                    Product Title
+                    {product.name}
                     <IconButton onClick={onClose}>
                         <CloseIcon />
                     </IconButton>
