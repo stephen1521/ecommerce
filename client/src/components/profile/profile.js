@@ -12,14 +12,14 @@ export default function Profile({showProfile, setShowProfile}){
     useEffect( () => {
         dispatch(authCheck())
       }, [auth])
-
+    //   console.log(auth);
     return (
         <Slide direction='down' in={showProfile} timeout={500}>
             <LoginBoxContainer>
-                <h1>Profile</h1>
                 <IconButton onClick={() => setShowProfile(false)} sx={{position: 'absolute', top: 10, right: 10}}>
                         <CloseIcon sx={{fontSize: '4rem'}} color='secondary'/>
                 </IconButton>
+                {auth ? <h1>Profile</h1> : <h3>Please Create an Account or Login to view your Profile</h3>}
             </LoginBoxContainer>
         </Slide>
     )

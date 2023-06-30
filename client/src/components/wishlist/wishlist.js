@@ -16,11 +16,11 @@ export default function Wishlist({showWishList, setShowWishList}){
     return (
         <Slide direction='down' in={showWishList} timeout={500}>
             <LoginBoxContainer>
-                <h1>WishList</h1>
                 <IconButton onClick={() => setShowWishList(false)} sx={{position: 'absolute', top: 10, right: 10}}>
                         <CloseIcon sx={{fontSize: '4rem'}} color='secondary'/>
                 </IconButton>
+                {auth ? <h1>WishList</h1> : <h3>Please Create an Account or Login to view WishList</h3>}
             </LoginBoxContainer>
-        </Slide>
+        </Slide> 
     )
 }
