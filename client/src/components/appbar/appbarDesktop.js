@@ -9,6 +9,14 @@ import {useEffect} from 'react'
 export default function AppBarDesktop({ matches, setShowSearchBox, setShowLogin, setShowRegister, setShowProfile, setShowWishList }){
     const dispatch = useDispatch()
     const auth = useSelector( state => state.auth.isAuth )
+    
+    const handleScroll = () => {
+        const products = document.getElementById('productsHeader');
+        if(products) {
+            products.scrollIntoView({behavior:'smooth'});
+        }
+    }
+
     useEffect( () => {
         dispatch(authCheck())
       }, [auth])
@@ -21,11 +29,11 @@ export default function AppBarDesktop({ matches, setShowSearchBox, setShowLogin,
 
     return (
         <AppBarContainer>
-            <AppBarHeader>Lorum Ipsoum</AppBarHeader>
+            <AppBarHeader sx={hover} onClick={() => window.location.reload()}>Lorum Ipsoum</AppBarHeader>
             <MyList type='row'>
-                <ListItemText primary= 'Home'/>
-                <ListItemText primary= 'Products'/>
-                <ListItemText primary= 'Contact Us'/>
+                <ListItemText primary= 'Home' sx={hover} onClick={() => window.location.reload()}/>
+                <ListItemText primary= 'Products' sx={hover} onClick={() => {handleScroll()}}/>
+                <ListItemText primary= 'Contact Us' sx={hover}/>
                 { auth ? <ListItemText primary= 'Logout' sx={hover} onClick={() => dispatch(logout())}/>
                 : <>
                 <ListItemText primary= 'Login' sx={hover} onClick={() => setShowLogin(true)}/>

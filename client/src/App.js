@@ -36,7 +36,7 @@ function App() {
               <Banner />
               <Promotions />
               <Box display={'flex'} justifyContent='center' sx={{ p:4 }}>
-                <Typography variant='h4'>
+                <Typography variant='h4' id="productsHeader">
                   Our Products
                 </Typography>
               </Box>

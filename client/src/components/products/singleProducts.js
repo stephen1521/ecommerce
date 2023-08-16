@@ -1,4 +1,4 @@
-import { Stack } from '@mui/system'
+import { Stack, Tooltip } from '@mui/material'
 import { Product, ProductActionButton, ProductActionsWrapper, ProductAddToCart, ProductFavButton, ProductImage } from '../../styles/products'
 import ProductMeta from './ProductMeta'
 import FavoriteIcon from '@mui/icons-material/Favorite'
@@ -32,13 +32,19 @@ export default function SingleProducts({product, matches}) {
                 <ProductActionsWrapper>
                     <Stack direction={'row'}>
                         <ProductFavButton isFav={favIsClicked} onClick={handleClick}>
-                            <FavoriteIcon />
+                            <Tooltip placement="left" title="Add To Wishlist">
+                                <FavoriteIcon />
+                            </Tooltip>
                         </ProductFavButton>
                         <ProductActionButton>
-                            <ShareIcon color='primary' />
+                            <Tooltip placement="left" title="Share This Product">
+                                <ShareIcon color='primary' />
+                            </Tooltip>
                         </ProductActionButton>
                         <ProductActionButton onClick={() => showProductDetailDialog()}>
-                            <FitScreenIcon color='primary' />
+                            <Tooltip placement="left" title="Full View Product">
+                                <FitScreenIcon color='primary' />
+                            </Tooltip>
                         </ProductActionButton>
                     </Stack>
                 </ProductActionsWrapper>

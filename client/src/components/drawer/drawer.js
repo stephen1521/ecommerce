@@ -10,6 +10,14 @@ import {useEffect} from 'react'
 export default function AppDrawer({openDrawer, setOpenDrawer, setShowLogin, setShowRegister}) {
     const dispatch = useDispatch()
     const auth = useSelector( state => state.auth.isAuth )
+
+    const handleScroll = () => {
+        const products = document.getElementById('productsHeader');
+        if(products) {
+            setOpenDrawer(false);
+            products.scrollIntoView({behavior:'smooth'});
+        }
+    }
     
     useEffect( () => {
         dispatch(authCheck())
@@ -23,11 +31,11 @@ export default function AppDrawer({openDrawer, setOpenDrawer, setShowLogin, setS
             <Drawer open={openDrawer}>
                 <List>
                     <ListItemButton>
-                        <ListItemText primaryTypographyProps={{ color: Colors.white}} >Home</ListItemText>
+                        <ListItemText primaryTypographyProps={{ color: Colors.white}} onClick={() => {window.location.reload()}}>Home</ListItemText>
                     </ListItemButton>
                     <Divider variant='middle'/>
                     <ListItemButton>
-                        <ListItemText primaryTypographyProps={{ color: Colors.white}}>Products</ListItemText>
+                        <ListItemText primaryTypographyProps={{ color: Colors.white}} onClick={() => {handleScroll()}}>Products</ListItemText>
                     </ListItemButton>
                     <Divider variant='middle'/>
                     <ListItemButton>

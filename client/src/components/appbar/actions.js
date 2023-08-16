@@ -9,6 +9,11 @@ import { useUIContext } from "../../context";
 export default function Actions({matches, setShowProfile, setShowWishList}) {
     const { cart, setShowCart} = useUIContext();
     let Breaking = matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop
+
+    const handleScroll = () => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+    }
+
     return (
         <Breaking>
             <MyList type='row'>
@@ -16,6 +21,7 @@ export default function Actions({matches, setShowProfile, setShowWishList}) {
                     sx={{
                         justifyContent:'center'
                     }}
+                    onClick={() => setShowCart(true)}
                 >
                     <ListItemIcon
                         sx={{
@@ -25,7 +31,7 @@ export default function Actions({matches, setShowProfile, setShowWishList}) {
                         }}
                     >
                         <Badge badgeContent={cart && cart.length} color='secondary'>
-                            <ShoppingCartIcon onClick={() => setShowCart(true)}/>
+                            <ShoppingCartIcon />
                         </Badge>
                     </ListItemIcon>
                 </ListItemButton>
@@ -34,8 +40,11 @@ export default function Actions({matches, setShowProfile, setShowWishList}) {
                     sx={{
                         justifyContent:'center'
                     }}
+                    onClick={() => {
+                        handleScroll();
+                        setShowWishList(true)}}
                 >
-                    <ListItemIcon onClick={() => setShowWishList(true)}
+                    <ListItemIcon 
                         sx={{
                             display: 'flex',
                             justifyContent: 'center',
@@ -50,8 +59,11 @@ export default function Actions({matches, setShowProfile, setShowWishList}) {
                     sx={{
                         justifyContent:'center'
                     }}
+                    onClick={() => {
+                        handleScroll();
+                        setShowProfile(true)}}
                 >
-                    <ListItemIcon onClick={() => setShowProfile(true)}
+                    <ListItemIcon 
                         sx={{
                             display: 'flex',
                             justifyContent: 'center',

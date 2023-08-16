@@ -1,4 +1,4 @@
-import { Box, Dialog, DialogContent, DialogTitle, IconButton, Slide, Typography, useMediaQuery, Button } from '@mui/material' 
+import { Box, Dialog, DialogContent, DialogTitle, IconButton, Slide, Typography, useMediaQuery, Button, Tooltip } from '@mui/material' 
 import { Colors } from '../../styles/theme'
 import CloseIcon from '@mui/icons-material/Close'
 import { ProductDetailInfoWrapper, ProductDetailWrapper } from '../../styles/productDetail'
@@ -10,6 +10,9 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import InstagramIcon from '@mui/icons-material/Instagram' 
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import useCart from '../../hooks/useCart'
+import useWishList from '../../hooks/useWishList'
+import { useState } from "react";
+import { useUIContext } from '../../context/index'
 
 
 function slideTransition(props) {
@@ -17,9 +20,24 @@ function slideTransition(props) {
 }
 
 export default function ProductDetail({open, onClose, product}) {
+    const {wishList} = useUIContext()
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('md'));
     const {addToCart, addToCartText} = useCart(product);
+
+    const {addToWishList} = useWishList(product);
+    const [favIsClicked, setFavIsClicked] = useState(0);
+
+    const handleClick = () => {
+        addToWishList();
+        wishList.some(item => item.id === product.id) ? setFavIsClicked(0) : setFavIsClicked(1);
+      } 
+
+    const hover = {
+        "&:hover": {
+            cursor: 'pointer'
+        }
+    }
 
     return (
         <Dialog TransitionComponent={slideTransition} variant='permanat' open={open} fullScreen>
@@ -52,13 +70,20 @@ export default function ProductDetail({open, onClose, product}) {
                             <Button onClick={addToCart} variant='contained'>{addToCartText}</Button>
                         </Box>
                         <Box display= 'flex' alignItems= 'center' sx={{ marginTop: 4, color: Colors.light}}>
-                            <FavoriteIcon sx={{ marginRight: 2}}/>
-                            Add to WishList
+                            <Tooltip placement="right" title="Add to Wishlist">
+                                <FavoriteIcon onClick={() => (handleClick())} sx={{ marginRight: 2, "&:hover": {cursor: 'pointer'}}}/>
+                            </Tooltip>
                         </Box>
                         <Box sx={{marginTop: 4, color: Colors.light}}>
-                            <FacebookIcon />
-                            <TwitterIcon sx={{ paddingLeft: theme.spacing(4)}}/>
-                            <InstagramIcon sx={{ paddingLeft: theme.spacing(4)}}/>
+                            <Tooltip placement="right" title="Share on Facebook">
+                                <FacebookIcon sx={hover} />
+                            </Tooltip>
+                            <Tooltip placement="right" title="Share on Twitter">
+                                <TwitterIcon sx={{ paddingLeft: theme.spacing(4), "&:hover": {cursor: 'pointer'}}}/>
+                            </Tooltip>
+                            <Tooltip placement="right" title="Share on Instagram">
+                                <InstagramIcon sx={{ paddingLeft: theme.spacing(4), "&:hover": {cursor: 'pointer'}}}/>
+                            </Tooltip>
                         </Box>
                     </ProductDetailInfoWrapper>
                 </ProductDetailWrapper>

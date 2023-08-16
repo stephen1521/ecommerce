@@ -37,7 +37,9 @@ export default function SingleProductDesktop({ product, matches }) {
         <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <ProductImage src={product.image} />
           <ProductFavButton isFav={favIsClicked} onClick={handleClick}>
-            <FavoriteIcon />
+            <Tooltip placement="left" title="Add To Wishlist">
+              <FavoriteIcon />
+            </Tooltip>
           </ProductFavButton>
           {showOptions && (
             <ProductAddToCart onClick={addToCart} show={showOptions} variant="contained">
@@ -47,12 +49,12 @@ export default function SingleProductDesktop({ product, matches }) {
           <ProductActionsWrapper show={showOptions}>
             <Stack direction='column'>
               <ProductActionButton>
-                <Tooltip placement="left" title="share this product">
+                <Tooltip placement="left" title="Share This Product">
                   <ShareIcon color="primary" />
                 </Tooltip>
               </ProductActionButton>
               <ProductActionButton onClick={() => showProductDetailDialog()}>
-                <Tooltip placement="left" title="Full view">
+                <Tooltip placement="left" title="Full View Product">
                   <FitScreenIcon color="primary" />
                 </Tooltip>
               </ProductActionButton>
