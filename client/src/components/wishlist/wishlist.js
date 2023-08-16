@@ -45,7 +45,7 @@ export default function Wishlist({showWishList, setShowWishList}){
     ))
     
     
-    
+    console.log(wishListContent);
       return (
         <Slide direction='down' in={showWishList} timeout={500}>
             <WishlistContainer>
@@ -55,9 +55,11 @@ export default function Wishlist({showWishList, setShowWishList}){
                 {auth ? 
                     <Box sx={{padding: 4}} display='flex' justifyContent={'center'} flexDirection='column' alignItems={'center'}>
                     <Typography variant='h3' color={Colors.black}>Wishlist</Typography>
-                    <Paper elevation={0} sx={{marginTop: 2, width: '90%', padding: 4}}>
+                    {wishListContent.length === 0 ? 
+                    <Typography marginTop={'50px'}>Your Wishlist is Empty.</Typography> 
+                    : <Paper elevation={0} sx={{marginTop: 2, width: '90%', padding: 4}}>
                         {wishListContent}
-                    </Paper>
+                    </Paper>}
                 </Box> 
             : <h3>Please Create an Account or Login to view WishList</h3>}
             </WishlistContainer>
