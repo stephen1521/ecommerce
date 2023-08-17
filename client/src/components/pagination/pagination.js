@@ -24,6 +24,11 @@ export default function AppPagination({setProducts}) {
         const to = (page - 1) * pageSize + pageSize;
 
         setPagination({...pagination, from: from, to: to})
+
+        const products = document.getElementById('productsHeader');
+        if(products) {
+            products.scrollIntoView({behavior:'smooth'});
+        }
     }
 
     return (
