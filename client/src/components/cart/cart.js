@@ -2,12 +2,14 @@ import { Avatar, Box, Button, Divider, Drawer, Paper, Typography, useMediaQuery,
 import { Colors } from '../../styles/theme'
 import { useUIContext } from '../../context/index'
 import IncDec from '../ui/incDecCart'
+import { useState, useEffect } from 'react'
 
 export default function Cart() {
 
     const {cart, setCart, setShowCart, showCart} = useUIContext();
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('md'));
+    const [total, setTotal] = useState(0);
 
     const removeFromCart = (item) => {
         cart.findIndex(c => c.id === item.id) >= 0 
@@ -15,7 +17,7 @@ export default function Cart() {
         : setCart(c => [...c, item]);
         
     }
-    
+
     // console.log(cart);
     const cartContent = cart.map(item => (
         <Box key={item.id} display={'flex'} justifyContent='center' alignItems={'center'}>
@@ -40,6 +42,14 @@ export default function Cart() {
     ))
     // console.log(cartContent);
 
+    useEffect(() => {
+        let cartTotal = 0;
+        cart.map(item => {
+            cartTotal += item.price;
+        })
+        setTotal(cartTotal.toFixed(2));
+    }, [cart])
+
     return (
         <Drawer open={showCart} onClose={() => setShowCart(false)} anchor='right' PaperProps={{sx:{width: matches ? '100%' : 500, background: Colors.light_grey, borderRadius: 0 }}}>
             {cart.length > 0 ? <Box sx={{padding: 4}} display='flex' justifyContent={'center'} flexDirection='column' alignItems={'center'}>
@@ -48,6 +58,7 @@ export default function Cart() {
                 <Paper elevation={0} sx={{marginTop: 2, width: '90%', padding: 4}}>
                     {cartContent}
                 </Paper>
+                <Typography variant='h6' color={Colors.black} marginTop={'15px'}>Total: $ {total}</Typography>
                 <Button sx={{marginTop: 4}} variant='contained'>
                     Proceed to Checkout
                 </Button>

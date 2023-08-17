@@ -45,7 +45,7 @@ export default function Wishlist({showWishList, setShowWishList}){
     ))
     
     
-    console.log(wishListContent);
+    // console.log(wishListContent);
       return (
         <Slide direction='down' in={showWishList} timeout={500}>
             <WishlistContainer>
