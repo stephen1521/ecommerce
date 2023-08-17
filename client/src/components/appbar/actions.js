@@ -7,7 +7,7 @@ import { Colors } from "../../styles/theme";
 import { useUIContext } from "../../context";
 
 export default function Actions({matches, setShowProfile, setShowWishList}) {
-    const { cart, setShowCart} = useUIContext();
+    const { cart, setShowCart, wishList} = useUIContext();
     let Breaking = matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop
 
     const handleScroll = () => {
@@ -50,8 +50,10 @@ export default function Actions({matches, setShowProfile, setShowWishList}) {
                             justifyContent: 'center',
                             color: matches && Colors.secondary
                         }}
-                    >
-                        <FavoriteIcon />
+                    >   
+                        <Badge badgeContent={wishList && wishList.length} color="secondary">
+                            <FavoriteIcon />
+                        </Badge>
                     </ListItemIcon>
                 </ListItemButton>
                 <Divider orientation="vertical" flexItem/>
