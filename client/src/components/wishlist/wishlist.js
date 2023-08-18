@@ -56,12 +56,14 @@ export default function Wishlist({showWishList, setShowWishList}){
                     <Box sx={{padding: 4}} display='flex' justifyContent={'center'} flexDirection='column' alignItems={'center'}>
                     <Typography variant='h3' color={Colors.black}>Wishlist</Typography>
                     {wishListContent.length === 0 ? 
-                    <Typography marginTop={'50px'}>Your Wishlist is Empty.</Typography> 
+                    <Typography marginTop={'50px'}>Your Wishlist is Empty!</Typography> 
                     : <Paper elevation={0} sx={{marginTop: 2, width: '90%', padding: 4}}>
                         {wishListContent}
                     </Paper>}
                 </Box> 
-            : <h3>Please Create an Account or Login to view WishList</h3>}
+            :   <Box display={'flex'} justifyContent={'center'}>
+                    <Typography variant='h5'>Please Create an Account or Login to view WishList</Typography>
+                </Box>}
             </WishlistContainer>
         </Slide> 
     )

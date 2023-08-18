@@ -5,6 +5,7 @@ import Actions from "./actions";
 import {useSelector, useDispatch} from 'react-redux'
 import {authCheck, logout} from '../../redux/authSlice'
 import {useEffect} from 'react'
+import { Colors } from "../../styles/theme";
 
 export default function AppBarDesktop({ matches, setShowSearchBox, setShowLogin, setShowRegister, setShowProfile, setShowWishList }){
     const dispatch = useDispatch()
@@ -23,13 +24,16 @@ export default function AppBarDesktop({ matches, setShowSearchBox, setShowLogin,
 
     const hover = {
         "&:hover": {
-            cursor: 'pointer'
-        }
+            cursor: 'pointer',
+            background: Colors.light_grey
+        },
+        display: 'flex',
+        justifyContent: 'center'
     }
 
     return (
         <AppBarContainer>
-            <AppBarHeader sx={hover} onClick={() => window.location.reload()}>Lorum Ipsoum</AppBarHeader>
+            <AppBarHeader sx={{"&:hover": {cursor: 'pointer'}}} onClick={() => window.location.reload()}>Lorum Ipsoum</AppBarHeader>
             <MyList type='row'>
                 <ListItemText primary= 'Home' sx={hover} onClick={() => window.location.reload()}/>
                 <ListItemText primary= 'Products' sx={hover} onClick={() => {handleScroll()}}/>

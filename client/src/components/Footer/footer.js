@@ -78,7 +78,7 @@ export default function Footer () {
                         </ListItemText>
                         <ListItemText>
                             <Typography lineHeight={2} variant='caption2'>
-                                WishList
+                                My Wishlist
                             </Typography>
                         </ListItemText>
                     </List>

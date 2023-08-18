@@ -17,6 +17,7 @@ export default function Actions({matches, setShowProfile, setShowWishList}) {
     return (
         <Breaking>
             <MyList type='row'>
+                <Divider orientation="vertical" flexItem/>
                 <ListItemButton
                     sx={{
                         justifyContent:'center'
